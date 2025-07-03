@@ -7,13 +7,14 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
 
+    - name: List directory structure
+      run: ls -R
+
     - name: Build the Docker image
-      run: docker build ./ellis-main --file ./ellis-main/ellis-main/Dockerfile --tag my-image-name:$(date +%Y%m%d%H%M%S)
+      run: docker build ./ellis-main --file ./ellis-main/Dockerfile --tag my-image-name:$(date +%Y%m%d%H%M%S)
